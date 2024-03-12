@@ -36,6 +36,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors(devCorsPolicy);
+
 app.MapControllers();
+
 
 app.Run();
