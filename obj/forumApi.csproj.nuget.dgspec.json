@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/var/home/altenhofen/code/backend/forumApi/forumApi.csproj": {}
+    "C:\\Users\\gabri\\Documents\\toshyro\\backend-xpr\\backend-postapi\\forumApi.csproj": {}
   },
   "projects": {
-    "/var/home/altenhofen/code/backend/forumApi/forumApi.csproj": {
+    "C:\\Users\\gabri\\Documents\\toshyro\\backend-xpr\\backend-postapi\\forumApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/var/home/altenhofen/code/backend/forumApi/forumApi.csproj",
+        "projectUniqueName": "C:\\Users\\gabri\\Documents\\toshyro\\backend-xpr\\backend-postapi\\forumApi.csproj",
         "projectName": "forumApi",
-        "projectPath": "/var/home/altenhofen/code/backend/forumApi/forumApi.csproj",
-        "packagesPath": "/var/home/altenhofen/.nuget/packages/",
-        "outputPath": "/var/home/altenhofen/code/backend/forumApi/obj/",
+        "projectPath": "C:\\Users\\gabri\\Documents\\toshyro\\backend-xpr\\backend-postapi\\forumApi.csproj",
+        "packagesPath": "C:\\Users\\gabri\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gabri\\Documents\\toshyro\\backend-xpr\\backend-postapi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/var/home/altenhofen/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\gabri\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -32,6 +32,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -74,12 +79,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.2, 8.0.2]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -88,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

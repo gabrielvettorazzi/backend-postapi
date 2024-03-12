@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("AplicationDbContext") ?? throw new InvalidOperationException("Connection string 'AplicationDbContext' not found.")));
 
@@ -9,6 +9,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddControllers();
 
+//services
+builder.Services.AddScoped<IPostItemsService, PostItemsService>();
+
+//repositories
+builder.Services.AddScoped<IPostItemsRepository, PostItemsRepository>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -39,6 +44,5 @@ if (app.Environment.IsDevelopment())
 app.UseCors(devCorsPolicy);
 
 app.MapControllers();
-
 
 app.Run();

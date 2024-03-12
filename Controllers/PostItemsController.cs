@@ -14,94 +14,99 @@ namespace forumApi.Controllers
     public class PostItemsController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly IPostItemsService _postItemsService;
 
-        public PostItemsController(ApplicationDbContext context)
+        public PostItemsController(
+        //ApplicationDbContext context,
+        IPostItemsService postItemsService)
         {
-            _context = context;
+            //_context = context;
+            _postItemsService = postItemsService;
         }
 
         // GET: api/PostItems
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<PostItem>>> GetPostItem()
+        public async Task<ActionResult<List<PostItemResponse>>> GetPostItem()
         {
-            return await _context.PostItem.ToListAsync();
+            return await _postItemsService.GetPostItem();
         }
-
-        // GET: api/PostItems/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<PostItem>> GetPostItem(long id)
-        {
-            var postItem = await _context.PostItem.FindAsync(id);
-
-            if (postItem == null)
-            {
-                return NotFound();
-            }
-
-            return postItem;
-        }
-
-        // PUT: api/PostItems/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutPostItem(long id, PostItem postItem)
-        {
-            if (id != postItem.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(postItem).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PostItemExists(id))
+        /*
+                // GET: api/PostItems/5
+                [HttpGet("{id}")]
+                public async Task<ActionResult<PostItem>> GetPostItem(long id)
                 {
-                    return NotFound();
+                    var postItem = await _context.PostItem.FindAsync(id);
+
+                    if (postItem == null)
+                    {
+                        return NotFound();
+                    }
+
+                    return postItem;
                 }
-                else
+
+                // PUT: api/PostItems/5
+                // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+                [HttpPut("{id}")]
+                public async Task<IActionResult> PutPostItem(long id, PostItem postItem)
                 {
-                    throw;
+                    if (id != postItem.Id)
+                    {
+                        return BadRequest();
+                    }
+
+                    _context.Entry(postItem).State = EntityState.Modified;
+
+                    try
+                    {
+                        await _context.SaveChangesAsync();
+                    }
+                    catch (DbUpdateConcurrencyException)
+                    {
+                        if (!PostItemExists(id))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
+                    }
+
+                    return NoContent();
                 }
-            }
 
-            return NoContent();
-        }
+                // POST: api/PostItems
+                // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+                [HttpPost]
+                public async Task<ActionResult<PostItem>> PostPostItem(PostItem postItem)
+                {
+                    _context.PostItem.Add(postItem);
+                    await _context.SaveChangesAsync();
 
-        // POST: api/PostItems
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<PostItem>> PostPostItem(PostItem postItem)
-        {
-            _context.PostItem.Add(postItem);
-            await _context.SaveChangesAsync();
+                    return CreatedAtAction("GetPostItem", new { id = postItem.Id }, postItem);
+                }
 
-            return CreatedAtAction("GetPostItem", new { id = postItem.Id }, postItem);
-        }
+                // DELETE: api/PostItems/5
+                [HttpDelete("{id}")]
+                public async Task<IActionResult> DeletePostItem(long id)
+                {
+                    var postItem = await _context.PostItem.FindAsync(id);
+                    if (postItem == null)
+                    {
+                        return NotFound();
+                    }
 
-        // DELETE: api/PostItems/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePostItem(long id)
-        {
-            var postItem = await _context.PostItem.FindAsync(id);
-            if (postItem == null)
-            {
-                return NotFound();
-            }
+                    _context.PostItem.Remove(postItem);
+                    await _context.SaveChangesAsync();
 
-            _context.PostItem.Remove(postItem);
-            await _context.SaveChangesAsync();
+                    return NoContent();
+                }
 
-            return NoContent();
-        }
-
-        private bool PostItemExists(long id)
-        {
-            return _context.PostItem.Any(e => e.Id == id);
-        }
+                private bool PostItemExists(long id)
+                {
+                    return _context.PostItem.Any(e => e.Id == id);
+                }
+                */
     }
 }
